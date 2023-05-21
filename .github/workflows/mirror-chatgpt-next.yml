@@ -12,18 +12,17 @@ jobs:
         os: [ ubuntu-latest ]
         node: [ 18 ]
 
-        steps:
-          - name: Mirror
-            shell: bash
-            run: |
-              mkdir repos
-              cd repos
-              git clone --branch main https://github.com/Yidadaa/ChatGPT-Next-Web.git
-              cd ChatGPT-Next-Web
-              git config user.name "${{ secrets.MIRROR_NAME }}"
-              git config user.email "${{ secrets.MIRROR_EMAIL }}"
-              git remote rename origin old-origin
-              git remote add origin https://oauth2:${{ secrets.MIRROR_CHATGPT_NEXT_PUSH_TOKEN }}@${{ secrets.MIRROR_CHATGPT_NEXT_PUSH_DEST }}.git
-              git fetch --unshallow old-origin
-              git push -u origin main --force
-    
+    steps:
+      - name: Mirror
+        shell: bash
+        run: |
+          mkdir repos
+          cd repos
+          git clone --branch main https://github.com/Yidadaa/ChatGPT-Next-Web.git
+          cd ChatGPT-Next-Web
+          git config user.name "${{ secrets.MIRROR_NAME }}"
+          git config user.email "${{ secrets.MIRROR_EMAIL }}"
+          git remote rename origin old-origin
+          git remote add origin https://oauth2:${{ secrets.MIRROR_CHATGPT_NEXT_PUSH_TOKEN }}@${{ secrets.MIRROR_CHATGPT_NEXT_PUSH_DEST }}.git
+          git fetch --unshallow old-origin
+          git push -u origin main --force
