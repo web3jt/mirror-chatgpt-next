@@ -1,4 +1,4 @@
-name: Deploy Production
+name: Mirror ChatGPT-Next
 
 on:
   workflow_dispatch:
@@ -16,6 +16,7 @@ jobs:
       - name: Mirror
         shell: bash
         run: |
+          cd ~
           mkdir repos
           cd repos
           git clone --branch main https://github.com/Yidadaa/ChatGPT-Next-Web.git
