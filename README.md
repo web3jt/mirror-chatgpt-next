@@ -1,1 +1,1 @@
-# mirror-chatgpt-next
+# Mirrors
