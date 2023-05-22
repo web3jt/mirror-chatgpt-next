@@ -2,6 +2,8 @@ name: Mirror ChatGPT-Next
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron:  '30 5 * * *'
 
 jobs:
   ci:
@@ -25,4 +27,4 @@ jobs:
           git config user.email "${{ secrets.MIRROR_EMAIL }}"
           git remote rename origin old-origin
           git remote add origin https://oauth2:${{ secrets.MIRROR_CHATGPT_NEXT_PUSH_TOKEN }}@${{ secrets.MIRROR_CHATGPT_NEXT_PUSH_DEST }}.git
-          git push -u origin main --force
+          git push -u origin main
